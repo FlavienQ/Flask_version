@@ -1,4 +1,5 @@
 // Support TLS-specific URLs, when appropriate.
+// to increase security, change the ws:// strings in to wss://
 if (window.location.protocol == "https:") {
   var ws_scheme = "wss://";
 } else {
