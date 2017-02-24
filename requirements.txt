@@ -15,14 +15,10 @@ itsdangerous==0.24
 Jinja2==2.8
 
 MarkupSafe==0.23
-<<<<<<< HEAD
 
 peewee==2.8.7
+
 redis==2.10.5
 
 Werkzeug==0.11.3
-=======
-peewee==2.8.7
-redis==2.10.5
-Werkzeug==0.11.3
->>>>>>> 28bfa7a11d9bef610b96a9281dbef995e0018f65
+
