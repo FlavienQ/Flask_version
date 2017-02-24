@@ -1,3 +1,6 @@
+# For the app turns locally
+venv
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db

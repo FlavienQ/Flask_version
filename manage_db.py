@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Fri Feb 24 10:55:18 2017
-
-@author: User
 """
 import os
 from peewee import *
@@ -40,6 +38,12 @@ def retrieve_all():
     for u in DiagnosisModel.select().order_by(DiagnosisModel.username):
         results.append(u)
     return results
+	
+# Import modules based on the environment.
+# The HEROKU value first needs to be set on Heroku
+# either through the web front-end or through the command
+# line (if you have Heroku Toolbelt installed, type the following:
+# heroku config:set HEROKU=1).
 	
 if 'HEROKU' in os.environ:
     import urlparse, psycopg2
