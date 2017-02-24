@@ -22,6 +22,10 @@ app.debug = 'DEBUG' in os.environ
 
 sockets = Sockets(app)
 redis = redis.from_url(REDIS_URL)
+<<<<<<< HEAD
+=======
+
+>>>>>>> b08586586397395fa3cd9975f0293d370377d485
 '''
 import psycopg2
 from urllib.parse import urlparse
