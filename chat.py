@@ -22,7 +22,7 @@ app.debug = 'DEBUG' in os.environ
 
 sockets = Sockets(app)
 redis = redis.from_url(REDIS_URL)
-
+'''
 import psycopg2
 from urllib.parse import urlparse
 urlparse.uses_netloc.append("postgres")
@@ -35,6 +35,7 @@ conn = psycopg2.connect(
     host=url.hostname,
     port=url.port
 )
+'''
 
 class ChatBackend(object):
     """Interface for registering and updating WebSocket clients."""
