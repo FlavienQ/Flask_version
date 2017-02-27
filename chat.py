@@ -23,7 +23,7 @@ app.config.from_object(os.environ['APP_SETTINGS'])
 
 
 # create the sqlachemy object
-db = SQLachemy(app)
+db = SQLAlchemy(app)
 
 from models import *
 '''
