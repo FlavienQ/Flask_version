@@ -1,4 +1,4 @@
-from app import db
+from chat import db
 from models import BlogPost
 
 # create the database and the db tables

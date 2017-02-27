@@ -1,10 +1,7 @@
 # -*- coding: utf-8 -*-
-
 """
 Chat Server
 ===========
-
-This simple application uses WebSockets to run a primitive chat server.
 """
 
 import os
@@ -13,15 +10,22 @@ import redis
 import gevent
 from flask import Flask, render_template
 from flask_sockets import Sockets
+from flask_sqlalchemy import SQLAlchemy
 
 REDIS_URL = os.environ['REDIS_URL']
 REDIS_CHAN = 'chat'
 
 app = Flask(__name__)
-app.debug = 'DEBUG' in os.environ
 
-sockets = Sockets(app)
-redis = redis.from_url(REDIS_URL)
+# config
+app.config.from_object(os.environ['APP_SETTINGS'])
+#app.debug = 'DEBUG' in os.environ
+
+
+# create the sqlachemy object
+db = SQLachemy(app)
+
+from models import *
 '''
 import psycopg2
 from urllib.parse import urlparse
@@ -36,6 +40,10 @@ conn = psycopg2.connect(
     port=url.port
 )
 '''
+# Connect to chat
+sockets = Sockets(app)
+redis = redis.from_url(REDIS_URL)
+
 
 class ChatBackend(object):
     """Interface for registering and updating WebSocket clients."""
