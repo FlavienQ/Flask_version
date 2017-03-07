@@ -1,3 +1,7 @@
+'''
+Old way to conenct to the database using psycopg2 instead of SQLAlchemy
+'''
+
 import os
 import psycopg2
 from urllib.parse import urlparse

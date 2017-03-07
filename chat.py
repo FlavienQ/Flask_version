@@ -12,18 +12,22 @@ from flask import Flask, render_template
 from flask_sockets import Sockets
 from flask_sqlalchemy import SQLAlchemy
 
+#Initialization
+from flask_heroku import Heroku
+app = Flask(__name__)
+#heroku = Heroku(app)
+
+# Alternative to flask_heroku
 REDIS_URL = os.environ['REDIS_URL']
 REDIS_CHAN = 'chat'
-
-app = Flask(__name__)
-
-# config
+redis = redis.from_url(REDIS_URL)
 app.config.from_object(os.environ['APP_SETTINGS'])
-#app.debug = 'DEBUG' in os.environ
-
+app.debug = 'DEBUG' in os.environ
 
 # create the sqlachemy object
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 db = SQLAlchemy(app)
+
 
 from models import *
 '''
@@ -40,9 +44,9 @@ conn = psycopg2.connect(
     port=url.port
 )
 '''
+
 # Connect to chat
 sockets = Sockets(app)
-redis = redis.from_url(REDIS_URL)
 
 
 class ChatBackend(object):
