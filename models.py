@@ -25,11 +25,10 @@ class BlogPost(db.Model):
 
 class UsersTable(db.Model):
 	__tablename__ = "userstable"
-
 	user_id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String, nullable=False)
-    email = db.Column(db.String, nullable=False)
-    password = db.Column(db.String)
+	name = db.Column(db.String,nullable = False)
+	email = db.Column(db.String, nullable=False)
+	password = db.Column(db.String)
 
     def __init__(self, name, email, password):
         self.name = name
