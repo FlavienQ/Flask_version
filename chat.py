@@ -21,9 +21,11 @@ app = Flask(__name__)
 REDIS_URL = os.environ['REDIS_URL']
 REDIS_CHAN = 'chat'
 redis = redis.from_url(REDIS_URL)
-app.config.from_object(os.environ['APP_SETTINGS'])
-app.debug = 'DEBUG' in os.environ
-
+# Create different settings for development or production environment
+#app.config.from_object(os.environ['APP_SETTINGS'])
+#app.debug = 'DEBUG' in os.environ
+# Could have some issue with the previous lines, so we confirm debug = True
+app.debug = True
 # create the sqlachemy object
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 db = SQLAlchemy(app)
