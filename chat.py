@@ -18,20 +18,20 @@ app = Flask(__name__)
 heroku = Heroku(app)
 
 # Alternative to flask_heroku
-'''
 REDIS_URL = os.environ['REDIS_URL']
 REDIS_CHAN = 'chat'
 redis = redis.from_url(REDIS_URL)
+'''
 # Create different settings for development or production environment
 #app.config.from_object(os.environ['APP_SETTINGS'])
 #app.debug = 'DEBUG' in os.environ
 # Could have some issue with the previous lines, so we confirm debug = True
-app.debug = True
 '''
+app.debug = True
 # create the sqlachemy object
-#app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL'] # change comment if flask-heroku used
-db = SQLAlchemy(app)
-
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL'] # change comment if flask-heroku used
+#db = SQLAlchemy(app)
+'''
 
 # Create db
 from models import *
@@ -45,7 +45,7 @@ db.session.add(UsersTable("NameOfUser","email.user@standard.com", "password01"))
 
 # commit the changes
 db.session.commit()
-
+'''
 # Connect to chat
 sockets = Sockets(app)
 
