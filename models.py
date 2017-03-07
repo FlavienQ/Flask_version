@@ -6,7 +6,6 @@ class BlogPost(db.Model):
 	__tablename__ = "posts"
 	
 	id =db.Column(db.Integer, primary_key = True)
-	posts_id = db.Column(db.Integer, ForeignKey('users.id'))
 	username = db.Column(db.String,nullable = False)
 	date = db.Column(db.Date, server_default=func.now())
 	conversation = db.Column(db.String, nullable=False)
@@ -30,22 +29,22 @@ class UsersTable(db.Model):
 	email = db.Column(db.String, nullable=False)
 	password = db.Column(db.String)
 
-    def __init__(self, name, email, password):
-        self.name = name
-        self.email = email
-        self.password = password
-        
+	def __init__(self, name, email, password):
+		self.name = name
+		self.email = email
+		self.password = password
+		
    def is_authenticated(self):
-        return True
+		return True
 
-    def is_active(self):
-        return True
+	def is_active(self):
+		return True
 
-    def is_anonymous(self):
-        return False
+	def is_anonymous(self):
+		return False
 
-    def get_id(self):
-        return unicode(self.id)
+	def get_id(self):
+		return unicode(self.id)
 
-    def __repr__(self):
-        return '<name - {}>'.format(self.name)
+	def __repr__(self):
+		return '<name - {}>'.format(self.name)
