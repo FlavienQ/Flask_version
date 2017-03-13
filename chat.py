@@ -13,9 +13,11 @@ from flask_sockets import Sockets
 from flask_sqlalchemy import SQLAlchemy
 
 #Initialization
-from flask_heroku import Heroku
+#from flask_heroku import Heroku
+
 app = Flask(__name__)
-heroku = Heroku(app)
+
+#heroku = Heroku(app)
 
 # Alternative to flask_heroku
 REDIS_URL = os.environ['REDIS_URL']
@@ -30,22 +32,15 @@ redis = redis.from_url(REDIS_URL)
 app.debug = True
 # create the sqlachemy object
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL'] # change comment if flask-heroku used
-#db = SQLAlchemy(app)
-'''
+
+#db = SQLAlchemy(app) # Now in models.py
 
 # Create db
-from models import *
-# create the database and the db tables
-db.create_all()
+#from models import *
 
-#insert
-db.session.add(BlogPost("DefaultUser1","This is a standard conversation."))
-db.session.add(BlogPost("DefaultUser2","It will be used to diagnose."))
-db.session.add(UsersTable("NameOfUser","email.user@standard.com", "password01"))
-
+#Add default user
 # commit the changes
-db.session.commit()
-'''
+
 # Connect to chat
 sockets = Sockets(app)
 
